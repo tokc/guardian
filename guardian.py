@@ -1,7 +1,7 @@
 import time
 
 class Guardian:
-    ''' Antiflooding mechanism. Tracks how fast users are sending messages. '''
+    ''' Anti-flooding mechanism. Tracks how fast users are sending messages. '''
     
     def __init__(self):
         # Abstract number that represents how quickly you can flood
