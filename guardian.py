@@ -5,7 +5,7 @@ class Guardian:
     
     def __init__(self, flood_limit):
         # Abstract number that represents how quickly you can flood
-        self.FLOOD_LIMIT = flood_limit
+        self.flood_limit = flood_limit
         # "username": (int) number of messages
         self.dict = {}
         self.timer = time.time()
@@ -33,7 +33,7 @@ class Guardian:
     def is_flooding(self, user, limit=None):
         ''' Tallies a user and returns True if they are above the limit. '''
         if limit == None:
-            limit = self.FLOOD_LIMIT
+            limit = self.flood_limit
         
         self.update_timer()
         
