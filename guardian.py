@@ -1,4 +1,4 @@
-import time
+from time import time
 
 class Guardian:
     ''' Anti-flooding mechanism. Tracks how fast users are sending messages. '''
