@@ -1,7 +1,8 @@
 from time import time
 
 class Guardian:
-    ''' Antiflooding mechanism. Tracks how fast users are sending messages. '''
+    """Antiflooding mechanism. Track how fast users are sending messages."""
+    
     def __init__(self, flood_limit):
         # Abstract number that represents how quickly you can flood
         self.flood_limit = flood_limit
@@ -10,7 +11,7 @@ class Guardian:
         self.timer = time()
     
     def update_timer(self):
-        ''' Count down the flood timer values for every logged user. '''
+        """Count down the flood timer values for every logged user."""
         now = time()
         time_elapsed = now - self.timer
         self.timer = now
@@ -25,7 +26,7 @@ class Guardian:
             del self.usernames[user]
         
     def is_flooding(self, user, limit=None):
-        ''' Tallies a user and returns True if they are above the limit. '''
+        """Tally a user and return True if they are above the limit."""
         # It's probably not necessary to have this optional limit argument.
         if limit is None:
             limit = self.flood_limit
