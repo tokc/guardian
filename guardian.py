@@ -26,7 +26,8 @@ class Guardian:
         
     def is_flooding(self, user, limit=None):
         ''' Tallies a user and returns True if they are above the limit. '''
-        if limit == None:
+        # It's probably not necessary to have this optional limit argument.
+        if limit is None:
             limit = self.flood_limit
         
         self.update_timer()
