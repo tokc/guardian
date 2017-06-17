@@ -6,7 +6,7 @@ class Guardian:
         # Abstract number that represents how quickly you can flood
         self.flood_limit = flood_limit
         # "username": (int) number of messages
-        self.dict = {}
+        self.usernames = {}
         self.timer = time()
     
     def update_timer(self):
@@ -17,12 +17,12 @@ class Guardian:
         
         cooled_down_users = []
         # Check every logged user against the timer and prune cooled-down ones.
-        for user in self.dict:
-            self.dict[user] -= time_elapsed
-            if self.dict[user] < 0:
+        for user in self.usernames:
+            self.usernames[user] -= time_elapsed
+            if self.usernames[user] < 0:
                 cooled_down_users.append(user)
         for user in cooled_down_users:
-            del self.dict[user]
+            del self.usernames[user]
         
     def is_flooding(self, user, limit=None):
         ''' Tallies a user and returns True if they are above the limit. '''
@@ -31,12 +31,12 @@ class Guardian:
         
         self.update_timer()
         
-        if user in self.dict:
-            self.dict[user] += 2
-            if self.dict[user] > limit:
+        if user in self.usernames:
+            self.usernames[user] += 2
+            if self.usernames[user] > limit:
                 return True
             else:
                 return False
         else:
-            self.dict[user] = 2
+            self.usernames[user] = 2
             return False
