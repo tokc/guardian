@@ -32,10 +32,8 @@ class Guardian:
 
         if user in self.usernames:
             self.usernames[user] += 2
-            if self.usernames[user] > limit:
-                return True
-            else:
-                return False
+            return self.usernames[user] > limit
+
         else:
             self.usernames[user] = 2
             return False
