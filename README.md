@@ -11,3 +11,12 @@ if anti_flood.is_flooding(username, OPTIONAL_FLOOD_LIMIT_INTEGER):
 else:
     reply = "Here is the response you requested."
 ```
+
+```python
+slow_chat = guardian_fixed_time.Guardian()
+
+if slow_chat.can_message(username):
+    reply = "Here is the response you requested."
+else:
+    reply = "Wait a little longer before making a request."
+```
