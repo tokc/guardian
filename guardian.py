@@ -16,11 +16,14 @@ class Guardian:
         time_elapsed = now - self.timer
         self.timer = now
 
+        cooled_down_users = []
         # Check every logged user against the timer and prune cooled-down ones.
         for user in self.usernames:
             self.usernames[user] -= time_elapsed
             if self.usernames[user] < 0:
-                del self.usernames[user]
+                cooled_down_users.append(user)
+        for user in cooled_down_users:
+            del self.usernames[user]
 
     def is_flooding(self, user, limit=None):
         """Tally a user and return True if they are above the limit."""
