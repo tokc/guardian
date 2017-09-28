@@ -16,9 +16,13 @@ class Guardian:
 
     def update_timer(self):
         """Check users against the timer and prune cooled-down ones."""
+        cooled_down_users = []
+        
         for user in self.users:
             if time() - self.users[user] < self.REPEAT_TIME:
-                del self.users[user]
+                cooled_down_users.append(user)
+        for user in cooled_down_users:
+            del self.users[user]
 
     def can_message(self, user):
         """Return True if user has not messaged in the last x seconds."""
